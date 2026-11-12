@@ -1,0 +1,52 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Yapei — café, helado y buenos momentos";
+    ViewData["Description"] = "Lattes artesanales y momentos ricos en Yapei. Elige tu favorito y pídelo por WhatsApp.";
+}
+<main>
+    <section class="hero" id="inicio">
+        <div class="hero-copy">
+            <span class="eyebrow"><span class="dot"></span> <span data-i18n="heroEyebrow">CAFÉ HECHO CON CARIÑO</span></span>
+            <h1><span data-i18n="heroTitle">Un sorbo.</span><br /><em>Yapei.</em></h1>
+            <p data-i18n="heroText">Tu pausa favorita, servida fría o calentita. Café artesanal, sabores que abrazan y un poquito de magia en cada vaso.</p>
+            <a class="button button-dark" href="#menu"><span data-i18n="heroCta">Descubrir el menú</span> <span>↘</span></a>
+            <div class="hero-note"><span class="note-star">✳</span><span>Preparado al momento<br /><strong>con ingredientes reales</strong></span></div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Latte frío artesanal servido en vaso con hielo">
+            <div class="hero-image"></div><div class="image-stamp">HECHO<br />PARA TI <span>✳</span></div>
+            <div class="hero-caption"><span>01 / 06</span><span>Tu nuevo ritual de cada día</span></div>
+        </div>
+        <div class="hero-bottom"><span>LA VIDA SABE MEJOR EN YAPEI</span><span>SCROLL PARA DESCUBRIR ↓</span></div>
+    </section>
+
+    <section class="menu-section section-pad" id="menu">
+        <div class="section-heading"><div><span class="eyebrow" data-i18n="menuEyebrow">NUESTRO MENÚ</span><h2><span data-i18n="menuTitle">Elige tu</span> <em data-i18n="menuTitleEm">antojo.</em></h2></div><p data-i18n="menuText">Seis formas de hacer que hoy<br />se sienta un poquito más rico.</p></div>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="quote-band"><span class="quote-flower">✳</span><p>Los días buenos empiezan<br />con algo <em>delicioso.</em></p><span class="quote-sub">Y los mejores, en Yapei.</span></section>
+
+    <section class="visit-section section-pad" id="visitanos">
+        <div class="visit-image" role="img" aria-label="Espacio cálido de cafetería"></div>
+        <div class="visit-copy"><span class="eyebrow" data-i18n="visitEyebrow">UN LUGAR PARA QUEDARSE</span><h2><span data-i18n="visitTitle">Tu mesa.</span><br /><em data-i18n="visitTitleEm">Tu momento.</em></h2><p data-i18n="visitText">Ven por un café, quédate por la buena compañía. Reserva tu espacio y nosotros ponemos lo rico.</p>
+            <button class="button button-dark" id="reserveOpen"><span data-i18n="reserveCta">Reservar una mesa</span> <span>↗</span></button>
+            <div class="hours"><span>HORARIO</span><strong>Lun — Sáb &nbsp; 09:00 — 21:00</strong></div>
+        </div>
+    </section>
+
+    <section class="contact-section section-pad" id="contacto"><div><span class="eyebrow" data-i18n="contactEyebrow">HABLEMOS</span><h2><span data-i18n="contactTitle">¿Algo en mente?</span><br /><em data-i18n="contactTitleEm">Estamos aquí.</em></h2></div>
+        <form id="contactForm" class="contact-form"><label><span data-i18n="yourName">Tu nombre</span><input name="name" required minlength="2" placeholder="¿Cómo te llamas?" /></label><label><span data-i18n="yourMessage">Tu mensaje</span><textarea name="message" required minlength="5" placeholder="Cuéntanos..." rows="3"></textarea></label><button class="button button-dark" type="submit"><span data-i18n="contactCta">Escribirnos por WhatsApp</span> <span>↗</span></button></form>
+    </section>
+</main>
+
+<dialog id="reserveDialog" class="dialog"><form id="reserveForm" class="dialog-card"><button type="button" class="dialog-close" data-close aria-label="Cerrar">×</button><span class="eyebrow">NOS ENCANTARÁ RECIBIRTE</span><h2>Reserva tu <em>mesa.</em></h2><label>Tu nombre<input name="name" required minlength="2" /></label><div class="form-row"><label>Fecha<input name="date" type="date" required /></label><label>Hora<input name="time" type="time" required /></label></div><label>Personas<select name="people"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label><button class="button button-dark" type="submit">Solicitar reserva <span>↗</span></button><small>La reserva se confirma directamente por WhatsApp.</small></form></dialog>
+
+<dialog id="cartDialog" class="dialog"><form class="dialog-card cart-card" id="checkoutForm"><button type="button" class="dialog-close" data-close aria-label="Cerrar">×</button><span class="eyebrow">CASI ES TUYO</span><h2>Tu <em>pedido.</em></h2><div id="cartItems"></div><div class="cart-total"><span>Total</span><strong id="cartTotal">Bs 0</strong></div><label>Tu nombre<input name="name" required minlength="2" /></label><label>Entrega<select name="delivery" id="delivery"><option value="retirar">Retiro en tienda</option><option value="entrega">Entrega a domicilio</option></select></label><label id="addressLabel" class="hidden">Dirección de entrega<input name="address" /></label><label>Teléfono de contacto<input name="phone" type="tel" required minlength="7" /></label><button class="button button-dark" type="submit">Confirmar por WhatsApp <span>↗</span></button><small>Tu pedido queda confirmado al enviarlo por WhatsApp.</small></form></dialog>
+
+<dialog id="adminDialog" class="dialog"><form id="adminForm" class="dialog-card"><button type="button" class="dialog-close" data-close aria-label="Cerrar">×</button><span class="eyebrow">ADMINISTRACIÓN</span><h2>Vista de <em>gestión.</em></h2><p class="admin-notice">Demostración local: la contraseña inicial es <strong>yapei2026</strong>. Para producción, configura autenticación del servidor antes de habilitar acceso público.</p><label>Contraseña<input type="password" name="password" required /></label><button class="button button-dark" type="submit">Entrar <span>↗</span></button><div id="adminProducts" class="hidden"></div></form></dialog>
+
+<button id="cartFab" class="cart-fab" aria-label="Abrir carrito">Bolsa <span id="cartCount">0</span></button>
+<a class="whatsapp-fab" id="whatsappFab" href="#contacto" aria-label="Consulta por WhatsApp">◉</a>
+
+@section Scripts { <script src="~/js/site.js" asp-append-version="true"></script> }

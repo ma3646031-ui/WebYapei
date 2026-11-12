@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@(ViewData["Description"] ?? "Yapei — café artesanal y momentos ricos.")" />
+    <meta name="theme-color" content="#f4efe7" />
+    <title>@ViewData["Title"]</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<header class="site-header"><a class="brand" href="#inicio" aria-label="Yapei inicio">yapei<span>✳</span></a><nav aria-label="Navegación principal"><a href="#menu" data-i18n="navMenu">Menú</a><a href="#visitanos" data-i18n="navVisit">Visítanos</a><a href="#contacto" data-i18n="navContact">Contacto</a></nav><div class="header-actions"><button id="langToggle" class="lang-toggle" aria-label="Cambiar idioma">EN</button><a class="header-cta" href="#menu">Pedir ahora <span>↗</span></a><button id="adminLink" class="admin-link" aria-label="Administración">•••</button></div><button class="mobile-menu" id="mobileMenu" aria-label="Abrir menú">☰</button></header>
+@RenderBody()
+<footer class="site-footer"><a class="brand" href="#inicio">yapei<span>✳</span></a><span>CAFÉ, HELADO Y BUENOS MOMENTOS.</span><span>© @DateTime.Now.Year YAPEI</span></footer>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
